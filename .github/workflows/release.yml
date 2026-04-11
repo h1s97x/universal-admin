@@ -1,0 +1,67 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build
+        run: pnpm build
+
+      - name: Publish to npm
+        run: pnpm publish -r --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  release-notes:
+    name: Release Notes
+    runs-on: ubuntu-latest
+    needs: release
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Generate release notes
+        run: |
+          VERSION=${GITHUB_REF#refs/tags/v}
+          echo "# Release v$VERSION" > release-notes.md
+          echo "" >> release-notes.md
+          echo "## Packages" >> release-notes.md
+          echo "" >> release-notes.md
+          for pkg in packages/*/; do
+            name=$(cat "$pkg/package.json" | jq -r '.name')
+            echo "- $name" >> release-notes.md
+          done
+          echo "" >> release-notes.md
+          echo "## Commits" >> release-notes.md
+          echo "" >> release-notes.md
+          git log --oneline --format="- %s" ${{ github.event.before }}..HEAD >> release-notes.md
+
+      - name: Upload release notes
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-notes
+          path: release-notes.md

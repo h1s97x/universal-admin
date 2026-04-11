@@ -1,0 +1,61 @@
+{
+  "name": "@cogitant/notify",
+  "version": "1.0.0",
+  "description": "A flexible, beautiful notification system for React applications",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./components": {
+      "types": "./dist/components/notify-toast.d.ts",
+      "import": "./dist/components/notify-toast.js",
+      "require": "./dist/components/notify-toast.cjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts src/components/*.tsx --format cjs,esm --dts --clean",
+    "dev": "tsup src/index.ts src/components/*.tsx --format cjs,esm --dts --clean --watch",
+    "test": "vitest"
+  },
+  "keywords": ["notification", "toast", "alert", "react", "hooks"],
+  "author": "cogitant",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": ">=17.0.0",
+    "react-dom": ">=17.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tsup": "^8.5.1",
+    "typescript": "^5.7.0",
+    "vitest": "^3.0.0"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cogitant/universal-admin.git",
+    "directory": "packages/notify"
+  },
+  "bugs": {
+    "url": "https://github.com/cogitant/universal-admin/issues"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
+  "sideEffects": false
+}
