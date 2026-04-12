@@ -12,10 +12,10 @@
     "react": "^18.3.0",
     "react-dom": "^18.3.0",
     "lucide-react": "^0.400.0",
-    "@h1s97x/rbac": "workspace:*",
-    "@h1s97x/admin-shell": "workspace:*",
-    "@h1s97x/notify": "workspace:*",
-    "@h1s97x/api-client": "workspace:*"
+    "@cogitant/rbac": "workspace:*",
+    "@cogitant/admin-shell": "workspace:*",
+    "@cogitant/notify": "workspace:*",
+    "@cogitant/api-client": "workspace:*"
   },
   "devDependencies": {
     "@types/react": "^18.3.0",
