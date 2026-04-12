@@ -1,7 +1,7 @@
 import { useState, useCallback } from 'react';
-import { NotifyProvider, useNotify, NotifyContainer } from '@h1s97x/notify';
-import { createApiClient, useQuery, useMutation } from '@h1s97x/api-client';
-import { AdminLayout, ThemeProvider } from '@h1s97x/admin-shell';
+import { NotifyProvider, useNotify, NotifyContainer } from '@cogitant/notify';
+import { createApiClient, useQuery, useMutation } from '@cogitant/api-client';
+import { AdminLayout, ThemeProvider } from '@cogitant/admin-shell';
 
 // Create API client
 const api = createApiClient({
@@ -46,7 +46,7 @@ function DemoContent() {
   return (
     <div className="p-8 space-y-8">
       <div className="space-y-4">
-        <h2 className="text-2xl font-bold">@h1s97x/universal-ui Demo</h2>
+        <h2 className="text-2xl font-bold">@cogitant/universal-admin Demo</h2>
         <p className="text-gray-600 dark:text-gray-400">
           A collection of reusable React components and utilities
         </p>
@@ -55,22 +55,22 @@ function DemoContent() {
       {/* Package Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         <PackageCard
-          title="@h1s97x/notify"
+          title="@cogitant/notify"
           description="Toast notifications"
           color="bg-green-500"
         />
         <PackageCard
-          title="@h1s97x/api-client"
+          title="@cogitant/api-client"
           description="HTTP client with hooks"
           color="bg-blue-500"
         />
         <PackageCard
-          title="@h1s97x/admin-shell"
+          title="@cogitant/admin-shell"
           description="Admin dashboard layout"
           color="bg-purple-500"
         />
         <PackageCard
-          title="@h1s97x/rbac"
+          title="@cogitant/rbac"
           description="Permission system"
           color="bg-orange-500"
         />
