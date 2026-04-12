@@ -6,7 +6,7 @@ type Listener = (notifications: NotifyInstance[]) => void;
 class NotifyStore {
   private notifications: NotifyInstance[] = [];
   private listeners: Set<Listener> = new Set();
-  private timers: Map<string, NodeJS.Timeout> = new Map();
+  private timers: Map<string, ReturnType<typeof setTimeout>> = new Map();
 
   subscribe(listener: Listener): () => void {
     this.listeners.add(listener);
