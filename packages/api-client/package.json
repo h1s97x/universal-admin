@@ -22,9 +22,11 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsup src/index.ts src/client/*.ts src/hooks/*.ts --format cjs,esm --dts --clean",
-    "dev": "tsup src/index.ts src/client/*.ts src/hooks/*.ts --format cjs,esm --dts --clean --watch",
-    "test": "vitest"
+    "build": "tsup src/index.ts src/client/api-client.ts src/client/types.ts src/client/index.ts src/hooks/index.ts src/hooks/use-api.ts --format cjs,esm --dts --clean",
+    "dev": "tsup src/index.ts src/client/api-client.ts src/client/types.ts src/client/index.ts src/hooks/index.ts src/hooks/use-api.ts --format cjs,esm --dts --clean --watch",
+    "lint": "tsc --noEmit",
+    "test": "vitest",
+    "clean": "rm -rf dist"
   },
   "keywords": ["api", "client", "fetch", "http", "request", "react", "hooks"],
   "author": "cogitant",
