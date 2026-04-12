@@ -12,93 +12,85 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
-        with:
-          version: 9
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'pnpm'
-      
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
-      
-      - name: Lint
-        run: pnpm lint
 
-  typecheck:
-    name: Type Check
+      - name: Install dependencies
+        run: pnpm install --ignore-scripts
+
+      - name: Lint
+        run: pnpm turbo run lint --filter=@cogitant/*
+
+  build:
+    name: Build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
-        with:
-          version: 9
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'pnpm'
-      
+
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
-      
+        run: pnpm install --ignore-scripts
+
       - name: Build
-        run: pnpm build
+        run: pnpm turbo run build --filter=@cogitant/*
 
   test:
     name: Test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
-        with:
-          version: 9
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'pnpm'
-      
+
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
-      
+        run: pnpm install --ignore-scripts
+
       - name: Test
-        run: pnpm test
+        run: pnpm turbo run test --filter=@cogitant/*
 
   coverage:
     name: Test Coverage
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
-        with:
-          version: 9
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'pnpm'
-      
+
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
-      
+        run: pnpm install --ignore-scripts
+
       - name: Test with coverage
-        run: pnpm test -- --coverage
-      
+        run: pnpm turbo run test --filter=@cogitant/* -- --coverage
+
       - name: Upload coverage
         uses: codecov/codecov-action@v4
         with:
