@@ -1,0 +1,11 @@
+# Code Owners
+# Default owner for everything in the repo
+* @h1s97x
+
+# Package owners
+packages/rbac/ @h1s97x
+packages/admin-shell/ @h1s97x
+packages/api-client/ @h1s97x
+packages/notify/ @h1s97x
+packages/universal-ui/ @h1s97x
+apps/demo/ @h1s97x
