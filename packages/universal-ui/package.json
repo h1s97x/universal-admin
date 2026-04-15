@@ -1,0 +1,54 @@
+{
+  "name": "@cogitant/universal-ui",
+  "version": "1.0.0",
+  "description": "Universal UI components combining rbac, admin-shell, api-client and notify",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts --clean",
+    "dev": "tsup src/index.ts --format cjs,esm --dts --watch",
+    "lint": "tsc --noEmit",
+    "clean": "rm -rf dist"
+  },
+  "keywords": [
+    "ui",
+    "components",
+    "react",
+    "admin",
+    "dashboard"
+  ],
+  "author": "cogitant",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": ">=17.0.0",
+    "react-dom": ">=17.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "@cogitant/notify": "workspace:*",
+    "@cogitant/api-client": "workspace:*",
+    "@cogitant/admin-shell": "workspace:*",
+    "tsup": "^8.5.1",
+    "typescript": "^5.7.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/h1s97x/universal-admin.git",
+    "directory": "packages/universal-ui"
+  }
+}
