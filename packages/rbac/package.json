@@ -50,11 +50,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cogitant/universal-admin.git",
+    "url": "git+https://github.com/h1s97x/universal-admin.git",
     "directory": "packages/rbac"
   },
   "bugs": {
-    "url": "https://github.com/cogitant/universal-admin/issues"
+    "url": "https://github.com/h1s97x/universal-admin/issues"
   },
   "publishConfig": {
     "access": "public",
