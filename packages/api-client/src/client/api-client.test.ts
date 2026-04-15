@@ -44,13 +44,13 @@ describe('ApiClient', () => {
   let originalFetch: typeof fetch;
 
   beforeEach(() => {
-    originalFetch = global.fetch;
+    originalFetch = globalThis.fetch;
     mockFetch = vi.fn();
-    global.fetch = mockFetch;
+    globalThis.fetch = mockFetch;
   });
 
   afterEach(() => {
-    global.fetch = originalFetch;
+    globalThis.fetch = originalFetch;
     vi.restoreAllMocks();
   });
 
